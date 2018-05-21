@@ -15,20 +15,21 @@ wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_
 sudo dpkg -i dropbox.deb 
 sudo apt -y install -f
 
-wget https://dl.opendesktop.org/api/files/downloadfile/id/1524079107/s/342bb017ce2d02ca0269b0fb6b3602c8/t/1526876716/u/19333/simplemenu-1.0.12.plasmoid
-plasmapkg2 -i simplemenu-1.0.12.plasmoid 
+#wget -c https://dl.opendesktop.org/api/files/download/id/1524079107/simplemenu-1.0.12.plasmoid
+#plasmapkg2 -i simplemenu-1.0.12.plasmoid 
 
 echo -e "${COLOR}Add PPA's"; tput sgr0
 sudo add-apt-repository -y ppa:papirus/papirus
 sudo add-apt-repository -y ppa:phoerious/keepassxc
 sudo apt-get -y update
 
-
 sudo apt-get -y install --install-recommends adapta-kde
 
 echo -e "${COLOR}Install shit"; tput sgr0
-sudo apt-get -y install fish htop yakuake tmux xclip keepassxc 
+sudo apt-get -y install fish htop yakuake tmux xclip keepassxc ncdu mc
 
+wget http://installer.jdownloader.org/JD2Setup_x64.sh
+/bin/sh JD2Setup_x64.sh
 
 if [[ $(grep bionic /etc/apt/sources.list | wc -c) -ne 0 ]]; then
 
