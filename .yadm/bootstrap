@@ -1,18 +1,18 @@
 #!/bin/bash
 export COLOR="\[\033[0;32m\]"
 
-echo -e "${COLOR}Remove packages"; tput sgr0
 cd /tmp
-#sudo apt -y purge firefox* kwrite vim
-#sudo apt -y autoremove
 
 echo -e "${COLOR}Upgrade system"; tput sgr0
 sudo apt -y update
 sudo apt -y dist-upgrade
 
+echo -e "${COLOR}Install shit"; tput sgr0
+sudo apt-get -y install build-essential fish htop yakuake tmux xclip ncdu mc vlc mpv ffmpeg vim keychain lm-sensors unrar transmission-qt
+
 echo -e "${COLOR}Download and install Dropbox"; tput sgr0
 wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
-sudo dpkg -i dropbox.deb 
+sudo dpkg -i dropbox.deb
 sudo apt -y install -f
 
 echo -e "${COLOR}Download and install Google Music Manager"; tput sgr0
@@ -25,23 +25,19 @@ wget -O vbox.deb https://download.virtualbox.org/virtualbox/5.2.12/virtualbox-5.
 sudo dpkg -i vbox.deb
 sudo apt -y install -f
 
-#wget -c https://dl.opendesktop.org/api/files/download/id/1524079107/simplemenu-1.0.12.plasmoid
-#plasmapkg2 -i simplemenu-1.0.12.plasmoid 
-
 echo -e "${COLOR}Add PPA's"; tput sgr0
 sudo add-apt-repository -y ppa:papirus/papirus
 sudo add-apt-repository -y ppa:phoerious/keepassxc
 sudo add-apt-repository -y ppa:tista/adapta
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
-sudo apt-get -y update
 
-echo -e "${COLOR}Install shit with recommends"; tput sgr0
-sudo apt-get -y install --install-recommends adapta-kde
+echo -e "${COLOR}Install more shit"; tput sgr0
+sudo apt-get -y install keepassxc adapta-gtk-theme streamlink flatpak adapta-kde kvantum papirus-icon-theme
 
-echo -e "${COLOR}Install shit"; tput sgr0
-sudo apt-get -y install fish htop yakuake tmux xclip keepassxc ncdu mc adapta-gtk-theme vlc mpv streamlink flatpak ffmpeg
+ssh-keygen -f $HOME/.ssh/id_rsa -N ''
+echo 'eval `keychain --eval id_rsa`' >> .bashrc
 
 wget http://installer.jdownloader.org/JD2Setup_x64.sh
-/bin/sh JD2Setup_x64.sh
+konsole -e "/bin/sh /tmp/JD2Setup_x64.sh"
 
