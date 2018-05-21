@@ -8,7 +8,7 @@ sudo apt -y update
 sudo apt -y dist-upgrade
 
 echo -e "${COLOR}Install shit"; tput sgr0
-sudo apt-get -y install build-essential fish htop yakuake tmux xclip ncdu mc vlc mpv ffmpeg vim keychain lm-sensors unrar transmission-qt
+sudo apt-get -y install build-essential fish htop yakuake tmux xclip ncdu mc vlc mpv ffmpeg vim keychain lm-sensors unrar transmission-qt i965-va-driver vainfo net-tools
 
 echo -e "${COLOR}Download and install Dropbox"; tput sgr0
 wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
